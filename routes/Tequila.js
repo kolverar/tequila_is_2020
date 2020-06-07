@@ -5,9 +5,7 @@ var Tequila = require('../models/tequila');
 
 
 router.patch('/tequila/:id', (request, responsive, next)=>{
-	Tequila.findOneAndUpdate()
-
-	Tequila.findOneAndUpdate({'id': request.params.ID}, (error, datos)=>{
+	Tequila.findOne({'id': request.params.ID}, (error, datos)=>{
 		if(datos == null){
 			responsive.status(404).json({mensaje:"No hay registro de tal ID"});
 		}else{//Modifica
