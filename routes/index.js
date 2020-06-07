@@ -12,7 +12,7 @@ router.patch('/tequila/:id', (request, responsive, next)=>{
 			responsive.status(404).json({mensaje:"No hay registro de tal ID"});
 		}else{//Modifica
 			var tequila = Tequila({
-				id : request.body.id
+				id : request.body.id,
 				nombre : request.body.nombre,
 				empresa : request.body.empresa,
 				tipoAgave : request.body.tipoAgave,
