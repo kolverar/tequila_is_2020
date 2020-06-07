@@ -12,4 +12,4 @@ let tequilaSchema = Schema({
     precio: Number
 });
 
-module.exports = mongoose.model("Tequila", tequilaSchema)
+module.exports = mongoose.model("Tequila", tequilaSchema);
