@@ -5,11 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const tequilaRouter = require('./routes/tequila');
-
+const tequilaRouter = require('./routes/tequila')
 
 const app = express();
 
@@ -34,10 +32,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/tequila/api', tequilaRouter);
+app.use('/tequila/api',tequilaRouter);
 
 
 // catch 404 and forward to error handler
@@ -55,6 +52,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;
