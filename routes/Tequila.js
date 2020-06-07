@@ -3,19 +3,22 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
 
+
 router.patch('/tequila/:id', (request, responsive, next)=>{
-	Tequila.findOne({'id': request.params.ID}, (error, datos)=>{
+	Tequila.findOneAndUpdate()
+
+	Tequila.findOneAndUpdate({'id': request.params.ID}, (error, datos)=>{
 		if(datos == null){
 			responsive.status(404).json({mensaje:"No hay registro de tal ID"});
 		}else{//Modifica
 			var tequila = Tequila({
-				id : request.body.id,
-				nombre : request.body.nombre,
-				empresa : request.body.empresa,
-				tipoAgave : request.body.tipoAgave,
-				porcentajeAlcohol : request.body.porcentajeAlcohol,
-				estadoOrigen : request.body.estadoOrigen,
-				precio : request.body.precio
+				id : Number,
+				nombre : String,
+				empresa : String,
+				tipoAgave : String,
+				porcentajeAlcohol : Number,
+				estadoOrigen : String,
+				precio : Number
 			});
 			tequila.patch((error, datos)=>{
 				if(error){
@@ -46,3 +49,5 @@ router.post('/tequila', (request, responsive, next)=>{
 		}
 	});
 });
+
+module.exports = router;
