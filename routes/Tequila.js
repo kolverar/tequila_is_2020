@@ -3,20 +3,60 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
 
+router.get('/tequila/:tequilaID',(req,res,next)=>{
+	Tequila.findOne({'id' : req.params.tequilaID},(err,datos)=>{
+    	if( datos == null){
+        	res.status(404).json({mensaje:"No existe!"});
+      	}else{
+        	res.status(200).json(datos);
+      	}
+    });
+});
 
-router.patch('/tequila/:id', (request, responsive, next)=>{
-	Tequila.findOne({'id': request.params.ID}, (error, datos)=>{
-		if(datos == null){
+router.post('/tequila',(req,res,next)=>{
+  	var marca = Tequila({
+      	id : 1,
+		nombre : "Caballito",
+		empresa : "Bacardi",
+		tipoAgave : "uno bien chido",
+		porcentajeAlcohol : 50,
+		estadoOrigen : "EEUU",
+		precio : 1000
+    });
+  	marca.save((err,datos)=>{
+    	if(err){
+      		res.status(404).json({mensaje:"Error al guardar"});
+    	}else{
+      		res.status(201).json(datos);
+      	}
+  	});
+});
+
+router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
+	Tequila.findOne({'tequilaID': request.params.id}, (error, datos)=>{
+/*
+	Tequila.findOneAndUpdate({'id':request.params.id}, {
+    	id : 1,
+		nombre : "Caballito",
+		empresa : "Bacardi",
+		tipoAgave : "uno bien chido",
+		porcentajeAlcohol : 50,
+		estadoOrigen : "EEUU",
+		precio : 1000
+	});
+});
+*/	
+		if(error){
 			responsive.status(404).json({mensaje:"No hay registro de tal ID"});
 		}else{//Modifica
 			var tequila = Tequila({
-				id : Number,
-				nombre : String,
-				empresa : String,
-				tipoAgave : String,
-				porcentajeAlcohol : Number,
-				estadoOrigen : String,
-				precio : Number
+				id : 1,
+				nombre : "Caballito",
+				empresa : "Bacardi",
+				tipoAgave : "uno bien chido",
+				porcentajeAlcohol : 50,
+				estadoOrigen : "EEUU",
+				precio : 1000
 			});
 			tequila.patch((error, datos)=>{
 				if(error){
@@ -25,25 +65,6 @@ router.patch('/tequila/:id', (request, responsive, next)=>{
       				responsive.status(201).json(datos);
     			}
 			});
-		}
-	});
-});
-
-router.post('/tequila', (request, responsive, next)=>{
-	var tequila = Tequila({
-    	id: Number,
-    	nombre: String,
-    	empresa: String,
-    	tipoAgave: String,
-    	porcentajeAlcohol: Number,
-    	estadoOrigen: String,
-    	precio: Number
-	});
-	tequila.save((error, datos)=>{
-		if(error){
-			responsive.status(404).json({mensaje:"Eror inesperado al guardar..."});
-		}else{
-			responsive.status(201).json(datos);
 		}
 	});
 });
