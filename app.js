@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -17,10 +17,10 @@ mongoose.connect('mongodb+srv://usuario:ssRY07Ec1l5uDW3Q@cluster0-w8w3k.mongodb.
   useUnifiedTopology: true
 }, (err, client) => {
   if(err)
-    console.error(err)
+    console.error(err);
   else
-    console.log("Conectado a  MongoDB")
-})
+    console.log("Conectado a  MongoDB");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

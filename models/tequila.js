@@ -1,8 +1,7 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-let tequilaSchema = Schema({
-
+var tequilaSchema = Schema({
     id: Number,
     nombre: String,
     empresa: String,
@@ -12,4 +11,4 @@ let tequilaSchema = Schema({
     precio: Number
 });
 
-module.exports = mongoose.model("Tequila", tequilaSchema)
+module.exports = mongoose.model("Tequila", tequilaSchema);

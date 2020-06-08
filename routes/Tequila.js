@@ -33,40 +33,21 @@ router.post('/tequila',(req,res,next)=>{
 });
 
 router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
-	Tequila.findOne({'tequilaID': request.params.id}, (error, datos)=>{
-/*
-	Tequila.findOneAndUpdate({'id':request.params.id}, {
-    	id : 1,
+	Tequila.findOneAndUpdate({id : 'tequilaID'},{
+		id : 1,
 		nombre : "Caballito",
 		empresa : "Bacardi",
 		tipoAgave : "uno bien chido",
 		porcentajeAlcohol : 50,
 		estadoOrigen : "EEUU",
 		precio : 1000
-	});
-});
-*/	
-		if(error){
-			responsive.status(404).json({mensaje:"No hay registro de tal ID"});
-		}else{//Modifica
-			var tequila = Tequila({
-				id : 1,
-				nombre : "Caballito",
-				empresa : "Bacardi",
-				tipoAgave : "uno bien chido",
-				porcentajeAlcohol : 50,
-				estadoOrigen : "EEUU",
-				precio : 1000
-			});
-			tequila.patch((error, datos)=>{
-				if(error){
-      				responsive.status(404).json({mensaje:"Error al guardar"});
-    			}else{
-      				responsive.status(201).json(datos);
-    			}
-			});
-		}
-	});
+	},function(error,datos){
+    	if (error) {
+      		responsive.status(404).json({mensaje:"Error al guardar"});
+    	}else{    
+    		responsive.status(201).json(datos);
+    	}
+  	});
 });
 
 module.exports = router;
