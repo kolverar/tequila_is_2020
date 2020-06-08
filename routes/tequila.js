@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
 
 
-router.post('/marca',(req,res,next)=>{
-  var marca = Tequila(
+router.post('/tequila',(req,res,next)=>{
+  var tequila = Tequila(
     {
       id:req.body.id,
       nombre:req.body.nombre,
@@ -17,7 +17,7 @@ router.post('/marca',(req,res,next)=>{
       precio:req.body.precio
     }
   );
-  marca.save((err,datos)=>{
+  tequila.save((err,datos)=>{
     if(err){
       res.status(404).json({
         mensaje:"Error al guardar"
