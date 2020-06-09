@@ -72,20 +72,21 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
 });
 
 
-router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
-	Tequila.findOneAndUpdate({id : 'tequilaID'},{
-		id : 1,
-		nombre : "Caballito",
-		empresa : "Bacardi",
-		tipoAgave : "uno bien chido",
-		porcentajeAlcohol : 50,
-		estadoOrigen : "EEUU",
-		precio : 1000
+router.patch('/tequila/:tequilaID', (req, res, next)=>{
+	Tequila.findOneAndUpdate({id : req.params.tequilaID}, (err, datos)=>
+	{
+		id :req.body.id,
+		nombre:req.body.nombre,
+		empresa:req.body.id,
+		tipoAgave:req.body.id,
+		porcentajeAlcohol:req.body.id,
+		estadoOrigen:req.body.id,
+		precio:req.body.id,
 	},function(error,datos){
     	if (error) {
       		responsive.status(404).json({mensaje:"Error al guardar"});
     	}else{
-    		responsive.status(201).json(datos);
+    		responsive.status(204).json(datos);
     	}
   	});
 });
