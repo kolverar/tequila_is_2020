@@ -5,9 +5,9 @@ var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
 
 
-router.get('/tequilaID/',(req,res,netxt)=>{
+router.get('/tequila/',(req,res,netxt)=>{
   Tequila.find({},(err,datos)=>{
-    if(err) res.status(500).json({error:"Error en la consulta"});
+    if(err) res.status(500).json({error:"No existe!"});
     if(datos) res.status(200).json(datos);
   });
 });
