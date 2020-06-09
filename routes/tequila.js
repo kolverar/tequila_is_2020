@@ -77,11 +77,11 @@ router.patch('/tequila/:tequilaID', (req, res, next)=>{
 	{
 		id :req.body.id,
 		nombre:req.body.nombre,
-		empresa:req.body.id,
-		tipoAgave:req.body.id,
-		porcentajeAlcohol:req.body.id,
-		estadoOrigen:req.body.id,
-		precio:req.body.id,
+		empresa:req.body.empresa,
+		tipoAgave:req.body.tipoAgave,
+		porcentajeAlcohol:req.body.porcentajeAlcohol,
+		estadoOrigen:req.body.estadoOrigen,
+		precio:req.body.precio,
 	},function(error,datos){
     	if (error) {
       		responsive.status(404).json({mensaje:"Error al guardar"});
