@@ -4,8 +4,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
 
-confirmar = new Boolean;
-
 router.delete('/tequila',(req,res,next)=>{
   res.status(405).json({mensaje:"No permitido"});
 });
@@ -14,7 +12,8 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
   Tequila.findOneAndDelete({id: req.params.idTequila} , (err, datos)=>{
     if(err){
         res.status(404).json({mensaje:"No se ha encontrado el producto"});
-      }else{
+      }else
+      if(datos){
 
       	var confirmar = confirm("¿Desea eliminar este elemento?");
 
