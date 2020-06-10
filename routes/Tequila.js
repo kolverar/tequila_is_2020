@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
-/*
-router.get('/tequila/:tequilaID',(req,res,next)=>{
+
+router.get('/tequila/:tequilaID',(req,res,next)=>{ //Uno
 	Tequila.findOne({'id' : req.params.tequilaID},(err,datos)=>{
     	if( datos == null){
         	res.status(404).json({mensaje:"No existe!"});
@@ -12,24 +12,32 @@ router.get('/tequila/:tequilaID',(req,res,next)=>{
       	}
     });
 });
-*/
-router.get('/tequila/', (req, res, next) => { //kevin
+
+router.get('/tequila/', (req, res, next) => { //Todos
     Tequila.find({}, (err, data) => {
         if(err) res.status(500).json({error: "Error!"})
         if(data) console.log(data) 
           res.status(200).json(data)
     });
 });
-
-router.post('/tequila',(req,res,next)=>{
+/*  Ejemplo de Tequila para hacer pruebas
+    id : 1,
+    nombre : "Caballito",
+    empresa : "Bacardi",
+    tipoAgave : "uno bien chido",
+    porcentajeAlcohol : 50,
+    estadoOrigen : "EEUU",
+    precio : 1000
+*/
+router.post('/tequila',(req,res,next)=>{//Insertar
   	var marca = Tequila({
-      	id : 1,
-		nombre : "Caballito",
-		empresa : "Bacardi",
-		tipoAgave : "uno bien chido",
-		porcentajeAlcohol : 50,
-		estadoOrigen : "EEUU",
-		precio : 1000
+    id : request.params.id,
+    nombre : request.params.nombre,
+    empresa : request.params.empresa,
+    tipoAgave : request.params.tipoAgave,
+    porcentajeAlcohol : request.params.porcentajeAlcohol,
+    estadoOrigen : request.params.estadoOrigen,
+    precio : request.params.precio
     });
   	marca.save((err,datos)=>{
     	if(err){
@@ -40,15 +48,15 @@ router.post('/tequila',(req,res,next)=>{
   	});
 });
 
-router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
-	Tequila.findOneAndUpdate({id : 'tequilaID'},{
-		id : 1,
-		nombre : "Caballito",
-		empresa : "Bacardi",
-		tipoAgave : "uno bien chido",
-		porcentajeAlcohol : 50,
-		estadoOrigen : "EEUU",
-		precio : 1000
+router.patch('/tequila/:tequilaID', (request, responsive, next)=>{//Actualizar
+	Tequila.findOneAndUpdate({id : request.params.tequilaID},{
+    id : request.params.id,
+    nombre : request.params.nombre,
+    empresa : request.params.empresa,
+    tipoAgave : request.params.tipoAgave,
+    porcentajeAlcohol : request.params.porcentajeAlcohol,
+    estadoOrigen : request.params.estadoOrigen,
+    precio : request.params.precio
 	},function(error,datos){
     	if (error) {
       		responsive.status(404).json({mensaje:"Error al guardar"});
@@ -58,21 +66,12 @@ router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
   	});
 });
 
-confirmar = new Boolean;
-router.delete('/tequila',(req,res,next)=>{
-  res.status(405).json({mensaje:"No permitido"});
-});
-router.delete('/tequila/:idTequila' , (req,res,next)=>{
+router.delete('/tequila/:idTequila' , (req,res,next)=>{//Borrar
   Tequila.findOneAndDelete({id: req.params.idTequila} , (err, datos)=>{
-    if(err){
+    if(datos==null){
         res.status(404).json({mensaje:"No se ha encontrado el producto"});
-      }else{
-        var confirmar = confirm("¿Desea eliminar este elemento?");
-        if (confirmar==true) {
-          res.status(200).json({mensaje:"Se ha eliminado el producto"});
-      }else{
-        res.status(405).json({mensaje:"Acción cancelada"});
-      }
+    }else{
+          res.status(200).json({mensaje:"Se ha eliminado el producto..."+datos});
     }
   });
 });
