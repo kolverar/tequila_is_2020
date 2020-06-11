@@ -13,9 +13,9 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
     if(err){
         res.status(404).json({mensaje:"No se ha encontrado el producto"});
       }else
-      if(datos){
+	if(datos){
 
-      	var confirmar = confirm("¿Desea eliminar este elemento?");
+    	var confirmar = confirm("¿Desea eliminar este elemento?");
 
       	if (confirmar==true) {
         	res.status(200).json({mensaje:"Se ha eliminado el producto"});
