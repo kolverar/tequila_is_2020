@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const tequilaRouter = require('./routes/tequila'); //Api rest --Back end
+const frontTequilaRouter = require('./routes/front_tequila') // Front end
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tequila/api',tequilaRouter);
+app.use('/front/tequila',frontTequilaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
