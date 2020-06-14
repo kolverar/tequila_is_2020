@@ -72,23 +72,22 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
 });
 
 
-router.patch('/tequila/:idTequila', (req, res, next)=>{
-	Tequila.findOneAndUpdate({id : req.params.idTequila}, (err, datos)=>
-	{
-		id :req.body.id,
-		nombre:req.body.nombre,
-		empresa:req.body.empresa,
-		tipoAgave:req.body.tipoAgave,
-		porcentajeAlcohol:req.body.porcentajeAlcohol,
-		estadoOrigen:req.body.estadoOrigen,
-		precio:req.body.precio,
-	},function(error,datos){
-    	if (error) {
-      		responsive.status(404).json({mensaje:"Error al guardar"});
-    	}else{
-    		responsive.status(204).json(datos);
-    	}
-  	});
+router.patch('/tequila/:idTequila', (request, responsive, next)=>{
+  Tequila.findOneAndUpdate({id : request.params.tequilaID},{
+    id : request.params.id,
+    nombre : request.params.nombre,
+    empresa : request.params.empresa,
+    tipoAgave : request.params.tipoAgave,
+    porcentajeAlcohol : request.params.porcentajeAlcohol,
+    estadoOrigen : request.params.estadoOrigen,
+    precio : request.params.precio
+  },function(error,datos){
+      if (error) {
+          responsive.status(404).json({mensaje:"Error al guardar"});
+      }else{
+        responsive.status(201).json(datos);
+      }
+    });
 });
 
 module.exports = router;
