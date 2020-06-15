@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let tequilaSchema = Schema({
-
     id: Number,
     nombre: String,
     empresa: String,
