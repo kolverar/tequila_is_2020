@@ -56,10 +56,6 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
         res.status(404).json({mensaje:"No se ha encontrado el producto"});
       }else
 	if(datos){
-
-    	var confirmar = confirm("¿Desea eliminar este elemento?");
-
-      	if (confirmar==true) {
         	res.status(200).json({mensaje:"Se ha eliminado el producto"});
     	}else{
     		res.status(405).json({mensaje:"Acción cancelada"});
@@ -71,13 +67,13 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
 
 router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
   Tequila.findOneAndUpdate({id : request.params.tequilaID},{
-    id : request.params.id,
-    nombre : request.params.nombre,
-    empresa : request.params.empresa,
-    tipoAgave : request.params.tipoAgave,
-    porcentajeAlcohol : request.params.porcentajeAlcohol,
-    estadoOrigen : request.params.estadoOrigen,
-    precio : request.params.precio
+    id : request.body.id,
+    nombre : request.body.nombre,
+    empresa : request.body.empresa,
+    tipoAgave : request.body.tipoAgave,
+    porcentajeAlcohol : request.body.porcentajeAlcohol,
+    estadoOrigen : request.body.estadoOrigen,
+    precio : request.body.precio
   },function(error,datos){
       if (error) {
           responsive.status(404).json({mensaje:"Error al guardar"});
