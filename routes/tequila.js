@@ -3,9 +3,21 @@ const router = express.Router();
 
 let Tequila = require('../models/tequila')
 
-router.get('/tequila/', (req, res, next) => {
+//get para obtener opciones de buscar
+router.get('/get/', (req, res, next) => {
   res.render('tequilaGet',{nombre:'kaskksa'})
 });
+//get para obtener todos los registros
+router.get('/tequila/', (req, res, next) => {
+    Tequila.find({}, (err, data) => {
+        if(err)
+            res.status(500).render('error404',{error:'404'})
+        if(data)
+            console.log(data)
+            res.status(200).json(data)
+    });
+});
+
 //metodo get para buscar por nombre desde url
 router.get('/tequila/:nombreT',(req, res, next) =>{
   Tequila.findOne(
