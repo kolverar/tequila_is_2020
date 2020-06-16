@@ -4,12 +4,6 @@
     <meta charset="utf-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-    </script>
-
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -19,17 +13,30 @@
       <p>
       </p>
     </div>
-
-    <div class="container">
-        <form method="post">
-            <div class="form-group">
-                <label>Buscar por nombre</label>
-                <input name="prueba"type="text" class="form-control" placeholder="Primer Letra mayuscula">
+    <div class="container card-group" >
+          <div class="card">
+            <div class="card-body" >
+                <h5 class="card-title">Buscar por nombre</h5>
+                <form method="post">
+                  <input name="pstNom"type="text" class="form-control" placeholder="Primer Letra mayuscula">
+                  <div>
+                    <button value="1"name="botonNom" type="submit" class="btn btn-info btn-lg btn-responsive" id="search"> <span class="glyphicon glyphicon-search"></span> Buscar</button>
+                  </div>
+                  </form>
+                </div>
+          </div>
+      <div class="card">
+        <div class="card-body" >
+            <h5 class="card-title">Buscar por precio</h5>
+            <form method="post">
+              <input name="pstPrec"type="text" class="form-control" placeholder="$">
+              <div>
+                <button name="botonNom" type="submit" value="2" class="btn btn-info btn-lg btn-responsive"> <span class="glyphicon glyphicon-search"></span> Buscar</button>
+              </div>
+              </form>
             </div>
-            <div class="clearfix"></div>
-            <button type="submit" class="btn btn-info btn-lg btn-responsive" id="search"> <span class="glyphicon glyphicon-search"></span> Buscar</button>
-        </form>
-    </div>
+      </div>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

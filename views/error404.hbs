@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style type="text/css"> body {
+        background: #dedede;
+    }
+    .page-wrap {
+        min-height: 100vh;
+    }</style>
+
+  </head>
+  <body>
+    <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <span class="display-1 d-block">{{error}}</span>
+                    <div class="mb-4 lead">Registro no encontrado</div>
+                    <button type="submit" onClick="history.go(-1);" class="btn btn-info btn-lg btn-responsive" > <span class="glyphicon glyphicon-search"></span> REGRESAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
