@@ -15,7 +15,7 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
     {'nombre':req.params.nombreT},
     (err,datos)=>{
       if(datos==null){
-        res.status(404).json({error:"Not Found"});
+        res.status(404).render('error404',{error:'404'})
       }else{
         res.status(200).json(datos);
       }
@@ -24,16 +24,30 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
   });
   //metodo post para obtener datos del la opcion buscar por nombre desde formulario
   router.post('/tequila/', (req, res, next) => {
-    Tequila.findOne(
-      {'nombre':req.body.prueba},
-      (err,datos)=>{
-        if(datos==null){
-          res.status(404).json({error:"Not Found"});
-        }else{
-          res.status(200).json(datos);
+    if(req.body.botonNom=='1'){
+      Tequila.findOne(
+        {'nombre':req.body.pstNom},
+        (err,datos)=>{
+          if(datos==null){
+            res.status(404).render('error404',{error:'404'})
+          }else{
+            res.status(200).json(datos);
+          }
         }
-      }
-    );
+      );
+    }else {
+      //metodo post para obtener datos del la opcion buscar por nombre desde formulario
+      Tequila.findOne(
+        {'precio':req.body.pstPrec},
+        (err,datos)=>{
+          if(datos==null){
+            res.status(404).render('error404',{error:'404'})
+          }else{
+            res.status(200).json(datos);
+          }
+        }
+      );
+    }
   });
 
 module.exports = router;
