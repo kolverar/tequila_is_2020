@@ -10,7 +10,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const tequilaRouter = require('./routes/tequila');
 
-
 const app = express();
 
 // Connection to MongoDB
