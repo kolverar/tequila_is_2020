@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+.navbar {
+	box-shadow: 2px 2px 5px #00B7FF;
+	opacity: 50
+}
+
+.card-img-top {
+    width: 70%;
+    height: 20vw;
+    display: block;
+    margin: auto;
+    object-fit: cover;
+}
