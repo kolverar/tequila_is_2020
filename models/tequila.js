@@ -8,7 +8,8 @@ let tequilaSchema = Schema({
     tipoAgave: String,
     porcentajeAlcohol: Number,
     estadoOrigen: String,
-    precio: Number
+    precio: Number,
+    imagen:String
 });
 
 module.exports = mongoose.model("Tequila", tequilaSchema)

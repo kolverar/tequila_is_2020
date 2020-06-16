@@ -4,8 +4,12 @@ const router = express.Router();
 let Tequila = require('../models/tequila')
 
 //get para obtener opciones de buscar
-router.get('/get/', (req, res, next) => {
-  res.render('tequilaGet',{nombre:'kaskksa'})
+router.get('/tequila/', (req, res, next) => {
+  res.render('tequilaGet',{nombre:'vacio'})
+});
+//get para obtner funcion registrar
+router.get('/registro/', (req, res, next) => {
+  res.render('tequilaPost',{nombre:'vacio'})
 });
 //get para obtener todos los registros
 router.get('/tequila/', (req, res, next) => {
@@ -43,32 +47,55 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
       }
     );
     });
-  //metodo post para obtener datos del la opcion buscar por nombre desde formulario
-  router.post('/tequila/', (req, res, next) => {
-    if(req.body.botonNom=='1'){
-      Tequila.findOne(
-        {'nombre':req.body.pstNom},
-        (err,datos)=>{
-          if(datos==null){
-            res.status(404).render('error404',{error:'404'})
-          }else{
-            res.status(200).json(datos);
+    //metodo post para obtener datos del la opcion buscar por nombre desde formulario
+    router.post('/tequila/', (req, res, next) => {
+      if(req.body.botonNom=='1'){
+        Tequila.findOne(
+          {'nombre':req.body.pstNom},
+          (err,datos)=>{
+            if(datos==null){
+              res.status(404).render('error404',{error:'404'})
+            }else{
+              res.status(200).json(datos);
+            }
           }
-        }
-      );
-    }else {
-      //metodo post para obtener datos del la opcion buscar por precio desde formulario
-      Tequila.findOne(
-        {'precio':req.body.pstPrec},
-        (err,datos)=>{
-          if(datos==null){
-            res.status(404).render('error404',{error:'404'})
-          }else{
-            res.status(200).json(datos);
+        );
+      }else {
+        //metodo post para obtener datos del la opcion buscar por precio desde formulario
+        Tequila.findOne(
+          {'precio':req.body.pstPrec},
+          (err,datos)=>{
+            if(datos==null){
+              res.status(404).render('error404',{error:'404'})
+            }else{
+              res.status(200).json(datos);
+            }
           }
-        }
-      );
-    }
-  });
+        );
+      }
+    });
 
+  router.post('/registro',(req,res,next)=>{
+    var tequila = Tequila(
+      {
+        id:req.body.id,
+        nombre:req.body.nombre,
+        empresa:req.body.empresa,
+        tipoAgave:req.body.tipoAgave,
+        porcentajeAlcohol:req.body.porcentajeAlcohol,
+        estadoOrigen:req.body.estadoOrigen,
+        precio:req.body.precio,
+        imagen:req.body.imagen
+      }
+    );
+    tequila.save((err,datos)=>{
+      if(err){
+        res.status(404).json({
+          mensaje:"Error al guardar"
+        });
+      }else{
+        res.status(201).json(datos);
+      }
+    });
+  });
 module.exports = router;
