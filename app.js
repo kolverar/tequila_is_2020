@@ -14,7 +14,7 @@ const tequilaRouter = require('./routes/tequila');
 const app = express();
 
 // Connection to MongoDB
-mongoose.connect('mongodb+srv://usuario:ssRY07Ec1l5uDW3Q@cluster0-w8w3k.mongodb.net/datos?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://usuario:ssRY07Ec1l5uDW3Q@cluster0-w8w3k.mongodb.net/tequila?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err, client) => {
