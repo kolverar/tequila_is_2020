@@ -22,7 +22,6 @@ router.get('/tequila/:idTequila',(req,res,next)=>{
 });
 
 
-
 router.delete('/tequila',(req,res,next)=>{
   
   res.status(405).json({mensaje:"No permitido"});
