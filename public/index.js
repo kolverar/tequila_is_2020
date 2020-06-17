@@ -87,7 +87,7 @@ var app = new Vue({
   },
   mounted(){
     axios
-        .get("http://localhost:3000/tequila/api/tequila")
+        .get(apiRest + "/tequila/api/tequila")
         .then((response) => {
           this.tequilas = response.data
           console.log(response.data)
