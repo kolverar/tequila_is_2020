@@ -4,13 +4,14 @@ const router = express.Router();
 let Tequila = require('../models/tequila')
 
 //get para obtener opciones de buscar
-router.get('/tequila/', (req, res, next) => {
+router.get('/buscar/', (req, res, next) => {
   res.render('tequilaGet',{nombre:'vacio'})
 });
 //get para obtner funcion registrar
 router.get('/registro/', (req, res, next) => {
   res.render('tequilaPost',{nombre:'vacio'})
 });
+
 //get para obtener todos los registros
 router.get('/tequila/', (req, res, next) => {
     Tequila.find({}, (err, data) => {
@@ -48,7 +49,7 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
     );
     });
     //metodo post para obtener datos del la opcion buscar por nombre desde formulario
-    router.post('/tequila/', (req, res, next) => {
+    router.post('/buscar/', (req, res, next) => {
       if(req.body.botonNom=='1'){
         Tequila.findOne(
           {'nombre':req.body.pstNom},
