@@ -58,7 +58,6 @@ router.post('/tequila',(req,res,next)=>{
     });
 });
 
-
 router.delete('/tequila',(req,res,next)=>{
 
     res.status(405).json({mensaje:"No permitido"});
@@ -76,7 +75,6 @@ router.delete('/tequila/:idTequila' , (req,res,next)=>{
         }
     });
 });
-
 
 router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
 

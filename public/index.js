@@ -1,5 +1,5 @@
 
-const apiRest = "http://localhost:3000/tequila/api/tequila"
+const apiRest = "https://tequila-is-2020.herokuapp.com/tequila/api/tequila"
 
 Vue.component("tequila", {
   data : function(){
