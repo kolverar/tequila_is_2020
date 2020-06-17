@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.get('/buscar/', (req, res, next) => {
   res.render('tequilaGet',{nombre:'vacio'})
 });
+
 //get para obtner funcion registrar
 router.get('/registro/', (req, res, next) => {
   res.render('tequilaPost',{nombre:'vacio'})
