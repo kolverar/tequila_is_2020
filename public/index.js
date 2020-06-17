@@ -1,5 +1,5 @@
 
-const apiRest = "https://tequila-is-2020.herokuapp.com/tequila/api/tequila"
+const apiRest = "https://tequila-is-2020.herokuapp.com/"
 
 Vue.component("tequila", {
   data : function(){
