@@ -1,5 +1,5 @@
 
-const apiRest = "https://tequila-is-2020.herokuapp.com"
+const apiRest = "https://tequila-is-2020.herokuapp.com/tequila/api/tequila"
 
 Vue.component("tequila", {
   data : function(){
@@ -87,7 +87,7 @@ var app = new Vue({
   },
   mounted(){
     axios
-        .get(apiRest + "/tequila/api/tequila")
+        .get(apiRest)
         .then((response) => {
           this.tequilas = response.data
           console.log(response.data)
