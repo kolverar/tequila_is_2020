@@ -52,24 +52,25 @@ Vue.component("tequila", {
     <div class="card" style="width: 18rem">
         <img alt="imagen" class="card-img-top" v-bind:src="tequila.imagen">
         <div class="card-body">
+            <h5 class="card-title"><b>{{tequila.nombre}}</b></h5>
                 <p class="card-text">
                     <div v-if="modify">
                         Nombre: <input class="ipt" v-model="tequilaCopy.nombre"><br>
                         Empresa: <input class="ipt" v-model="tequilaCopy.empresa"> <br>
                         Tipo de agave: <input class="ipt" v-model="tequilaCopy.tipoAgave"><br>
-                        Porcentaje de alcohol: <input class="ipt" v-model="tequilaCopy.porcentajeAlcohol"><br>
-                        Estado de origin: <input class="ipt" v-model="tequilaCopy.estadoOrigen"><br>
+                        % Alcohol: <input class="ipt" v-model="tequilaCopy.porcentajeAlcohol"><br>
+                        Estado de origen: <input class="ipt" v-model="tequilaCopy.estadoOrigen"><br>
                         Precio: <input class="ipt" v-model="tequilaCopy.precio"><br>
                         URL Imagen: <input class="ipt" v-model="tequilaCopy.imagen"><br>
                         <button type="button" class="btn btn-success" v-on:click="modificarTequila(tequilaCopy)">Aceptar</button>
                         <button type="button" class="btn btn-warning" v-on:click="swapModify(tequila)">Cancelar</button>
                     </div>
                     <div v-else>
-                        Empresa: {{tequila.empresa}}<br>
-                        Tipo de agave: {{tequila.tipoAgave}}<br>
-                        Porcentaje de alcohol: {{tequila.porcentajeAlcohol}}<br>
-                        Estado de origin: {{tequila.estadoOrigen}}<br>
-                        Precio: {{tequila.precio}}<br>
+                        <b>Empresa:</b> {{tequila.empresa}}<br>
+                        <b>Tipo de agave:</b> {{tequila.tipoAgave}}<br>
+                        <b>% Alcohol:</b> {{tequila.porcentajeAlcohol}}<br>
+                        <b>Estado de origen:</b> {{tequila.estadoOrigen}}<br>
+                        <b>Precio:</b> {{tequila.precio}}<br>
                         <button type="button" class="btn btn-warning" v-on:click="swapModify(tequila)">Modificar</button>
                         <button type="button" class="btn btn-danger" v-on:click="eliminarTequila(tequila)">Eliminar</button>
                     </div>
