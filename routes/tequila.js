@@ -61,8 +61,4 @@ router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
 });
 
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> 03b6ab2a9c74037366645da28f2548d97dc92d9c
