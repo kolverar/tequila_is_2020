@@ -4,12 +4,16 @@ const apiRest = "https://tequila-is-2020.herokuapp.com/tequila/api/tequila"
 Vue.component("tequila", {
   data : function(){
     return {modify: false,
+            delete: false,
             tequilaCopy: null}
   },
   methods: {
     swapModify: function(tequila) {
       this.tequilaCopy = JSON.parse(JSON.stringify(tequila))  // Clone of object
       this.modify = !this.modify
+    },
+    swapDelete: function(){
+        this.delete = !this.delete
     },
     modificarTequila: function (tequila) {
 
@@ -54,7 +58,7 @@ Vue.component("tequila", {
         <div class="card-body">
             <h5 class="card-title"><b>{{tequila.nombre}}</b></h5>
                 <p class="card-text">
-                    <div v-if="modify">
+                    <div v-if="this.modify == true">
                         Nombre: <input class="ipt" v-model="tequilaCopy.nombre"><br>
                         Empresa: <input class="ipt" v-model="tequilaCopy.empresa"> <br>
                         Tipo de agave: <input class="ipt" v-model="tequilaCopy.tipoAgave"><br>
@@ -62,8 +66,10 @@ Vue.component("tequila", {
                         Estado de origen: <input class="ipt" v-model="tequilaCopy.estadoOrigen"><br>
                         Precio: <input class="ipt" v-model="tequilaCopy.precio"><br>
                         URL Imagen: <input class="ipt" v-model="tequilaCopy.imagen"><br>
+             
                         <button type="button" class="btn btn-success" v-on:click="modificarTequila(tequilaCopy)">Aceptar</button>
                         <button type="button" class="btn btn-warning" v-on:click="swapModify(tequila)">Cancelar</button>
+                  
                     </div>
                     <div v-else>
                         <b>Empresa:</b> {{tequila.empresa}}<br>
@@ -71,8 +77,15 @@ Vue.component("tequila", {
                         <b>% Alcohol:</b> {{tequila.porcentajeAlcohol}}<br>
                         <b>Estado de origen:</b> {{tequila.estadoOrigen}}<br>
                         <b>Precio:</b> {{tequila.precio}}<br>
-                        <button type="button" class="btn btn-warning" v-on:click="swapModify(tequila)">Modificar</button>
-                        <button type="button" class="btn btn-danger" v-on:click="eliminarTequila(tequila)">Eliminar</button>
+                        
+                        <div v-if="this.delete == true">
+                            <button type="button" class="btn btn-outline-danger" v-on:click="eliminarTequila(tequila)">Confirmar Elim.</button>
+                            <button type="button" class="btn btn-warning" v-on:click="swapDelete()">Cancelar</button>
+                        </div>
+                        <div v-else>
+                            <button type="button" class="btn btn-warning" v-on:click="swapModify(tequila)">Modificar</button>
+                            <button type="button" class="btn btn-danger" v-on:click="swapDelete()">Eliminar</button>
+                        </div>   
                     </div>
                 </p>
         </div>
