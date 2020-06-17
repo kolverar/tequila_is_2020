@@ -8,7 +8,9 @@ var tequilaSchema = Schema({
     tipoAgave: String,
     porcentajeAlcohol: Number,
     estadoOrigen: String,
-    precio: Number
+    precio: Number,
+    ml: Number,
+    imagen: String
 });
 
 module.exports = mongoose.model("Tequila", tequilaSchema);

@@ -6,13 +6,12 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const tequilaRouter = require('./routes/tequila');
 
 const app = express();
 
 // Connection to MongoDB
-mongoose.connect('mongodb+srv://usuario:ssRY07Ec1l5uDW3Q@cluster0-w8w3k.mongodb.net/datos?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://usuario:ssRY07Ec1l5uDW3Q@cluster0-w8w3k.mongodb.net/tequila?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err, client) => {
@@ -32,9 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/tequila/api', tequilaRouter);
+app.use('/Home', indexRouter);
+app.use('/Home/Tequila', tequilaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
