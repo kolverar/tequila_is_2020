@@ -5,7 +5,7 @@ var Tequila = require('../models/tequila');
 
 
 router.get('/', (req, res, next) => {
-  res.render('post',{nombre:'vacio'})
+  res.render('post')
 });
 
 router.post('/',(req,res,next)=>{

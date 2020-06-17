@@ -21,13 +21,6 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-        <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/front/tequilas">Todos<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>-->
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -35,32 +28,18 @@
             </li>
           </ul>
           
-          <form method="get" class="form-inline my-3 my-lg-0">
-            <input type="text" id="producto" class="form-control" placeholder="Buscar" aria-label="search">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+
+          <!--<form method="get" class="form-inline my-3 my-lg-0">
+            <input type="text" id="nombre" class="form-control" placeholder="Buscar" aria-label="search">
               <div>
                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btnBuscar">Buscar</button>
-               </div>
-            <script>
-              const producto=document.querySelector('#producto');
-              const boton=document.querySelector('#btnBuscar');
-
-              const filtrar=()=>{
-                const texto=producto.value.toLoweCase();
-                for(let tequila of tequilas){
-                  let nombre=tequila.nombre.toLoweCase();
-                  if(nombre.indexOf(texto) !== -1){
-                    `<li>$(tequila.nombre)</li>`
-                  }
-                }
-              }
-
-              btnBuscar.addEventListener('click', filtrar);
-            </script>
-          </form>
-          <!--<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>-->
+              </div>
+          -->
+          
         </div>
       </div>
     </nav>
