@@ -52,7 +52,7 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
     router.post('/buscar/', (req, res, next) => {
       if(req.body.botonNom=='1'){
         Tequila.findOne(
-          {'nombre':req.body.pstNom},
+          {'nombre':{$regex:req.body.pstNom,$options:"$i"}}, // expresion regular para buscar coincidencias y no distinguier minusculas ni mayusculas
           (err,datos)=>{
             if(datos==null){
               res.status(404).render('error404',{error:'404'})
