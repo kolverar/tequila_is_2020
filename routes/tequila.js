@@ -12,7 +12,6 @@ router.use((req, res, next) => {
     next()
 })
 
-
 router.delete('/tequila',(req,res,next)=>{
 
     res.status(405).json({mensaje:"No permitido"});
