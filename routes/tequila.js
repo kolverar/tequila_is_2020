@@ -22,50 +22,27 @@ router.get('/tequila/:idTequila',(req,res,next)=>{
 });
 
 
-router.post('/tequila',(req,res,next)=>{
-  var tequila = Tequila(
-    {
-      id:req.body.id,
-      nombre:req.body.nombre,
-      empresa:req.body.empresa,
-      tipoAgave:req.body.tipoAgave,
-      porcentajeAlcohol:req.body.porcentajeAlcohol,
-      estadoOrigen:req.body.estadoOrigen,
-      precio:req.body.precio
-    }
-  );
-  tequila.save((err,datos)=>{
-    if(err){
-      res.status(404).json({
-        mensaje:"Error al guardar"
-      });
-    }else{
-      res.status(201).json(datos);
-    }
-  });
-});
-
-
 router.delete('/tequila',(req,res,next)=>{
+  
   res.status(405).json({mensaje:"No permitido"});
 });
 
 router.delete('/tequila/:idTequila' , (req,res,next)=>{
+
   Tequila.findOneAndDelete({id: req.params.idTequila} , (err, datos)=>{
     if(err){
         res.status(404).json({mensaje:"No se ha encontrado el producto"});
       }else
-	if(datos){
-        	res.status(200).json({mensaje:"Se ha eliminado el producto"});
-    	}else{
-    		res.status(405).json({mensaje:"Acción cancelada"});
-    	}
+  if(datos){
+
+      res.status(200).json({mensaje: "Se ha eliminado el producto"})
       }
   });
 });
 
 
 router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
+
   Tequila.findOneAndUpdate({id : request.params.tequilaID},{
     id : request.body.id,
     nombre : request.body.nombre,
@@ -77,10 +54,11 @@ router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
   },function(error,datos){
       if (error) {
           responsive.status(404).json({mensaje:"Error al guardar"});
-      }else{    
+      }else{
         responsive.status(201).json(datos);
       }
     });
 });
+
 
 module.exports = router;
