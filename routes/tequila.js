@@ -63,6 +63,7 @@ router.post('/tequila',(req,res,next)=>{
             tipoAgave:req.body.tipoAgave,
             porcentajeAlcohol:req.body.porcentajeAlcohol,
             estadoOrigen:req.body.estadoOrigen,
+            ml:req.body.ml,
             precio:req.body.precio,
             imagen:req.body.imagen
         }
@@ -87,6 +88,7 @@ router.patch('/tequila/:tequilaID', (request, responsive, next)=>{
         tipoAgave : request.body.tipoAgave,
         porcentajeAlcohol : request.body.porcentajeAlcohol,
         estadoOrigen : request.body.estadoOrigen,
+        ml: request.body.ml,
         precio : request.body.precio
     },function(error,datos){
         if (error) {
