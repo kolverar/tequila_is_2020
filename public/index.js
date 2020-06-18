@@ -64,6 +64,7 @@ Vue.component("tequila", {
                         Tipo de agave: <input class="ipt" v-model="tequilaCopy.tipoAgave"><br>
                         % Alcohol: <input class="ipt" v-model="tequilaCopy.porcentajeAlcohol"><br>
                         Estado de origen: <input class="ipt" v-model="tequilaCopy.estadoOrigen"><br>
+                        mL: <input class="ipt" v-model="tequilaCopy.ml"><br>
                         Precio: <input class="ipt" v-model="tequilaCopy.precio"><br>
                         URL Imagen: <input class="ipt" v-model="tequilaCopy.imagen"><br>
              
@@ -76,6 +77,7 @@ Vue.component("tequila", {
                         <b>Tipo de agave:</b> {{tequila.tipoAgave}}<br>
                         <b>% Alcohol:</b> {{tequila.porcentajeAlcohol}}<br>
                         <b>Estado de origen:</b> {{tequila.estadoOrigen}}<br>
+                        <b>mL:</b> {{tequila.ml}}<br>
                         <b>Precio:</b> {{tequila.precio}}<br>
                         
                         <div v-if="this.delete == true">

@@ -9,6 +9,7 @@ let tequilaSchema = Schema({
     porcentajeAlcohol: Number,
     estadoOrigen: String,
     precio: Number,
+    ml: Number,
     imagen:String
 });
 
