@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Tequila = require('../models/tequila');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render("index")
@@ -90,6 +91,7 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
         porcentajeAlcohol:req.body.porcentajeAlcohol,
         estadoOrigen:req.body.estadoOrigen,
         precio:req.body.precio,
+        ml:req.body.ml,
         imagen:req.body.imagen
       }
     );
