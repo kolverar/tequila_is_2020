@@ -91,6 +91,7 @@ router.get('/tequila/:nombreT',(req, res, next) =>{
         porcentajeAlcohol:req.body.porcentajeAlcohol,
         estadoOrigen:req.body.estadoOrigen,
         precio:req.body.precio,
+        ml:req.body.ml,
         imagen:req.body.imagen
       }
     );
